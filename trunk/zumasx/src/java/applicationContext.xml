@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+    <bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="default" />
+    </bean>
+
+    <context:annotation-config />
+
+    <bean id="transactionManager"
+          class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+    
+    <tx:annotation-driven />
+
+    <bean id="br.com.nanstec.dao.UsuarioDao" class="br.com.nanstec.dao.imp.UsuarioDaoImp" />
+    <bean id="br.com.nanstec.dao.GrupoDao" class="br.com.nanstec.dao.imp.GrupoDaoImp" />
+    <bean id="br.com.nanstec.dao.NoticiaDao" class="br.com.nanstec.dao.imp.NoticiaDaoImp" />
+    <bean id="br.com.nanstec.dao.VeiculoDao" class="br.com.nanstec.dao.imp.VeiculoDaoImp" />
+    <bean id="br.com.nanstec.dao.FabricanteDao" class="br.com.nanstec.dao.imp.FabricanteDaoImp" />
+</beans>
